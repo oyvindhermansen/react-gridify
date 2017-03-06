@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import { render } from 'react-dom';
-import { Row, Column } from '../lib/index';
+import React, {Component} from 'react'
+import { render } from 'react-dom'
+import { Row, Column } from '../lib/index'
 
 class App extends Component {
 
@@ -36,7 +36,14 @@ class App extends Component {
 					{
 						this.state.items.map((item, index) => {
 							return (
-								<Column className="someOtherClass" key={item.id} small="2" medium="6" large="12" padding="10px">
+								<Column
+									className="someOtherClass"
+									key={item.id}
+									small="2"
+									medium="6"
+									large="12"
+									padding="10px"
+								>
 									<div style={styles}>{item.text}</div>
 								</Column>
 							)
@@ -44,7 +51,7 @@ class App extends Component {
 					}
 				</Row>
 			</div>
-		);
+		)
 	}
 }
 
@@ -53,4 +60,4 @@ document.addEventListener('DOMContentLoaded', () => {
     <App />,
     document.getElementById('root')
   );
-});
+})

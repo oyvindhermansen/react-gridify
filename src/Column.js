@@ -1,5 +1,12 @@
-import React, { Component } from 'react';
-import { css } from 'glamor';
+import React, { Component } from 'react'
+import { css } from 'glamor'
+
+/*
+* TODO:
+* Need to cut down to one switch/case for checking sizes.
+* Three switches seems a bit excessive, and I am sure
+* this can be done in a more efficient way.
+*/
 
 export default class Column extends Component {
   largify(gridSize) {
