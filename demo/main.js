@@ -24412,7 +24412,8 @@ var App = function (_Component) {
 		value: function render() {
 			var styles = {
 				padding: '1rem',
-				backgroundColor: 'orange'
+				backgroundColor: 'orange',
+				marginBottom: '0.5rem'
 			};
 			return _react2.default.createElement(
 				'div',

@@ -14,7 +14,7 @@ import { Row, Column } from 'react-gridify'
     padding="10px"
     className="someAdditionalClass"
   >
-    <SomeChildComponent />
+    <SomeCardComponent />
   </Column>
 </Row>
 ```

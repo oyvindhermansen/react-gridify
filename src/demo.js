@@ -27,7 +27,8 @@ class App extends Component {
 	render() {
 		const styles = {
 			padding: '1rem',
-			backgroundColor: 'orange'
+			backgroundColor: 'orange',
+			marginBottom: '0.5rem'
 		}
 		return (
 			<div>
