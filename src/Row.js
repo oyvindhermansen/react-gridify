@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { css } from 'glamor';
+import React, { Component } from 'react'
+import { css } from 'glamor'
 
 export default class Row extends Component {
   setStyles(maxWidth) {
@@ -21,7 +21,7 @@ export default class Row extends Component {
   }
 
   render() {
-    const { children, maxWidth } = this.props;
+    const { children, maxWidth } = this.props
     return (
       <div className="row" {...this.setStyles(maxWidth)}>
         {children}

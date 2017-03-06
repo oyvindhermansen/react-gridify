@@ -1,14 +1,14 @@
 {
   "name": "react-gridify",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A very simple grid maker in form of React Components",
   "main": "./lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "demo": "webpack",
+    "prepublish": "npm run build && npm run demo",
     "demo:watch": "webpack --colors --watch",
-    "build": "NODE_ENV=production cross-env BABEL_ENV=commonjs babel src --out-dir lib",
-    "dev": "npm run build && babel-watch src/"
+    "build": "NODE_ENV=production cross-env BABEL_ENV=commonjs babel src --out-dir lib"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,6 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
     "babel-register": "^6.18.0",
-    "babel-watch": "^2.0.6",
     "cross-env": "^3.2.3",
     "webpack": "^2.2.0-rc.3"
   },

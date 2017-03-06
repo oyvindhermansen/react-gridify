@@ -31,8 +31,9 @@ class App extends Component {
 			marginBottom: '0.5rem'
 		}
 		return (
-			<div>
-				<Row maxWidth="70rem">
+			<Row maxWidth="70rem">
+				<Column large="2" medium="1" centered>
+					<Row>
 					{
 						this.state.items.map((item, index) => {
 							return (
@@ -40,8 +41,8 @@ class App extends Component {
 									className="someOtherClass"
 									key={item.id}
 									small="2"
-									medium="6"
-									large="12"
+									medium="4"
+									large="2"
 									padding="10px"
 								>
 									<div style={styles}>{item.text}</div>
@@ -49,8 +50,9 @@ class App extends Component {
 							)
 						})
 					}
-				</Row>
-			</div>
+					</Row>
+				</Column>
+			</Row>
 		)
 	}
 }

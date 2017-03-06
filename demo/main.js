@@ -10807,15 +10807,31 @@ var Column = function (_Component) {
       return 100 / size;
     }
   }, {
+    key: 'setStandardStyles',
+    value: function setStandardStyles(columnNumber) {
+      var centered = this.props.centered;
+
+      if (centered) {
+        return {
+          width: this.calculateWidth(columnNumber) + '%',
+          margin: '0 auto',
+          position: 'relative'
+        };
+      } else {
+        return {
+          width: this.calculateWidth(columnNumber) + '%',
+          float: 'left',
+          position: 'relative'
+        };
+      }
+    }
+  }, {
     key: 'largify',
-    value: function largify(gridSize) {
+    value: function largify(columnNumber) {
       var styles = {};
 
-      if (gridSize) {
-        styles = {
-          width: this.calculateWidth(gridSize) + '%',
-          float: 'left'
-        };
+      if (columnNumber) {
+        styles = this.setStandardStyles(columnNumber);
       } else {
         styles = {
           width: '100%'
@@ -10826,25 +10842,19 @@ var Column = function (_Component) {
     }
   }, {
     key: 'mediumify',
-    value: function mediumify(gridSize) {
-      if (gridSize) {
+    value: function mediumify(columnNumber) {
+      if (columnNumber) {
         return (0, _glamor.css)({
-          '@media(max-width: 900px)': {
-            width: this.calculateWidth(gridSize) + '%',
-            float: 'left'
-          }
+          '@media(max-width: 900px)': this.setStandardStyles(columnNumber)
         });
       }
     }
   }, {
     key: 'smallify',
-    value: function smallify(gridSize) {
-      if (gridSize) {
+    value: function smallify(columnNumber) {
+      if (columnNumber) {
         return (0, _glamor.css)({
-          '@media(max-width: 600px)': {
-            width: this.calculateWidth(gridSize) + '%',
-            float: 'left'
-          }
+          '@media(max-width: 600px)': this.setStandardStyles(columnNumber)
         });
       }
     }
@@ -10872,6 +10882,7 @@ var Column = function (_Component) {
           small = _props.small,
           medium = _props.medium,
           large = _props.large,
+          centered = _props.centered,
           padding = _props.padding,
           className = _props.className,
           children = _props.children;
@@ -24201,29 +24212,33 @@ var App = function (_Component) {
 				marginBottom: '0.5rem'
 			};
 			return _react2.default.createElement(
-				'div',
-				null,
+				_index.Row,
+				{ maxWidth: '70rem' },
 				_react2.default.createElement(
-					_index.Row,
-					{ maxWidth: '70rem' },
-					this.state.items.map(function (item, index) {
-						return _react2.default.createElement(
-							_index.Column,
-							{
-								className: 'someOtherClass',
-								key: item.id,
-								small: '2',
-								medium: '6',
-								large: '12',
-								padding: '10px'
-							},
-							_react2.default.createElement(
-								'div',
-								{ style: styles },
-								item.text
-							)
-						);
-					})
+					_index.Column,
+					{ large: '2', medium: '1', centered: true },
+					_react2.default.createElement(
+						_index.Row,
+						null,
+						this.state.items.map(function (item, index) {
+							return _react2.default.createElement(
+								_index.Column,
+								{
+									className: 'someOtherClass',
+									key: item.id,
+									small: '2',
+									medium: '4',
+									large: '2',
+									padding: '10px'
+								},
+								_react2.default.createElement(
+									'div',
+									{ style: styles },
+									item.text
+								)
+							);
+						})
+					)
 				)
 			);
 		}
