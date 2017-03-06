@@ -24212,14 +24212,14 @@ var App = function (_Component) {
 				marginBottom: '0.5rem'
 			};
 			return _react2.default.createElement(
-				'div',
-				null,
+				_index.Row,
+				{ maxWidth: '70rem' },
 				_react2.default.createElement(
-					_index.Row,
-					{ maxWidth: '70rem' },
+					_index.Column,
+					{ large: '2', medium: '1', centered: true },
 					_react2.default.createElement(
-						_index.Column,
-						{ large: '3', medium: '1', centered: true },
+						_index.Row,
+						null,
 						this.state.items.map(function (item, index) {
 							return _react2.default.createElement(
 								_index.Column,

@@ -18,12 +18,28 @@ import { Row, Column } from 'react-gridify'
   </Column>
 </Row>
 ```
+### Example usage with centered
+```javascript
+// Might be good for e.g article text width
+
+  <Row>
+    <Column medium="1" large="2" centered>
+      <Row>
+        <Column>
+          <h1>Title<h1>
+          <p>Lorem ipsum dolor sit amet</p>
+        </Column>
+      </Row>
+    </Column>
+  </Row>
+```
 
 ### API
 Component | Props
 --- | --- | ---
 Row | maxWidth
-Column | small, medium, large, padding, className
+Column | small, medium, large, centered, padding, className
+
 ### Install it locally
 ```
 $ git clone https://github.com/oyvindhermansen/react-gridify.git

@@ -31,28 +31,28 @@ class App extends Component {
 			marginBottom: '0.5rem'
 		}
 		return (
-			<div>
-				<Row maxWidth="70rem">
-					<Column large="3" medium="1" centered>
-						{
-							this.state.items.map((item, index) => {
-								return (
-									<Column
-										className="someOtherClass"
-										key={item.id}
-										small="2"
-										medium="4"
-										large="2"
-										padding="10px"
-									>
-										<div style={styles}>{item.text}</div>
-									</Column>
-								)
-							})
-						}
-					</Column>
-				</Row>
-			</div>
+			<Row maxWidth="70rem">
+				<Column large="2" medium="1" centered>
+					<Row>
+					{
+						this.state.items.map((item, index) => {
+							return (
+								<Column
+									className="someOtherClass"
+									key={item.id}
+									small="2"
+									medium="4"
+									large="2"
+									padding="10px"
+								>
+									<div style={styles}>{item.text}</div>
+								</Column>
+							)
+						})
+					}
+					</Row>
+				</Column>
+			</Row>
 		)
 	}
 }
