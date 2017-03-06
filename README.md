@@ -38,7 +38,7 @@ import { Row, Column } from 'react-gridify'
 Component | Props
 --- | --- | ---
 Row | maxWidth
-Column | small, medium, large, centered, padding, className
+Column | xSmall, small, medium, large, centered, padding, className
 
 ### Install it locally
 ```

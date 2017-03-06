@@ -25,34 +25,50 @@ class App extends Component {
 	}
 
 	render() {
+		const defaultStyles = {
+			fontFamily: 'sans-serif'
+		}
+
 		const styles = {
 			padding: '1rem',
 			backgroundColor: 'orange',
-			marginBottom: '0.5rem'
+			marginBottom: '0.5rem',
 		}
 		return (
-			<Row maxWidth="70rem">
-				<Column large="2" medium="1" centered>
-					<Row>
-					{
-						this.state.items.map((item, index) => {
-							return (
-								<Column
-									className="someOtherClass"
-									key={item.id}
-									small="2"
-									medium="4"
-									large="2"
-									padding="10px"
-								>
-									<div style={styles}>{item.text}</div>
-								</Column>
-							)
-						})
-					}
-					</Row>
-				</Column>
-			</Row>
+			<div style={defaultStyles}>
+				<Row>
+						{
+							this.state.items.map((item, index) => {
+								return (
+									<Column
+										className="someOtherClass"
+										key={item.id}
+										xSmall="1"
+										small="2"
+										medium="3"
+										large="4"
+										padding="10px"
+									>
+										<div style={styles}>{item.text}</div>
+									</Column>
+								)
+							})
+						}
+				</Row>
+				<hr />
+				<Row>
+					<Column centered small="1" medium="2" large="2">
+						<Row>
+							<Column small="1">
+								<h1>This is a title</h1>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+							</Column>
+						</Row>
+					</Column>
+				</Row>
+			</div>
 		)
 	}
 }

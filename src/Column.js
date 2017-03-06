@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { css } from 'glamor'
 
 export default class Column extends Component {
@@ -40,7 +40,7 @@ export default class Column extends Component {
   mediumify(columnNumber) {
     if (columnNumber) {
       return css({
-        '@media(max-width: 900px)': this.setStandardStyles(
+        '@media only screen and (max-width: 64em)': this.setStandardStyles(
           columnNumber
         )
       })
@@ -50,7 +50,17 @@ export default class Column extends Component {
   smallify(columnNumber) {
     if (columnNumber) {
       return css({
-        '@media(max-width: 600px)': this.setStandardStyles(
+        '@media only screen and (max-width: 40em)': this.setStandardStyles(
+          columnNumber
+        )
+      })
+    }
+  }
+
+  extraSmallify(columnNumber) {
+    if (columnNumber) {
+      return css({
+        '@media only screen and (max-width: 25em)': this.setStandardStyles(
           columnNumber
         )
       })
@@ -75,6 +85,7 @@ export default class Column extends Component {
 
   render() {
     const {
+      xSmall,
       small,
       medium,
       large,
@@ -92,10 +103,19 @@ export default class Column extends Component {
         {...this.largify(large)}
         {...this.mediumify(medium)}
         {...this.smallify(small)}
+        {...this.extraSmallify(xSmall)}
         {...this.paddify(padding)}
       >
         {children}
       </div>
     )
   }
+}
+
+Column.PropTypes = {
+  xSmall: React.PropTypes.string,
+  small: React.PropTypes.string,
+  medium: React.PropTypes.string,
+  large: React.PropTypes.string,
+  padding: React.PropTypes.string,
 }

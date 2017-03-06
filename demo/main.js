@@ -10845,7 +10845,7 @@ var Column = function (_Component) {
     value: function mediumify(columnNumber) {
       if (columnNumber) {
         return (0, _glamor.css)({
-          '@media(max-width: 900px)': this.setStandardStyles(columnNumber)
+          '@media only screen and (max-width: 64em)': this.setStandardStyles(columnNumber)
         });
       }
     }
@@ -10854,7 +10854,16 @@ var Column = function (_Component) {
     value: function smallify(columnNumber) {
       if (columnNumber) {
         return (0, _glamor.css)({
-          '@media(max-width: 600px)': this.setStandardStyles(columnNumber)
+          '@media only screen and (max-width: 40em)': this.setStandardStyles(columnNumber)
+        });
+      }
+    }
+  }, {
+    key: 'extraSmallify',
+    value: function extraSmallify(columnNumber) {
+      if (columnNumber) {
+        return (0, _glamor.css)({
+          '@media only screen and (max-width: 25em)': this.setStandardStyles(columnNumber)
         });
       }
     }
@@ -10879,6 +10888,7 @@ var Column = function (_Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
+          xSmall = _props.xSmall,
           small = _props.small,
           medium = _props.medium,
           large = _props.large,
@@ -10894,7 +10904,7 @@ var Column = function (_Component) {
         'div',
         _extends({
           className: 'column ' + additionalClassNames
-        }, this.largify(large), this.mediumify(medium), this.smallify(small), this.paddify(padding)),
+        }, this.largify(large), this.mediumify(medium), this.smallify(small), this.extraSmallify(xSmall), this.paddify(padding)),
         children
       );
     }
@@ -10904,6 +10914,15 @@ var Column = function (_Component) {
 }(_react.Component);
 
 exports.default = Column;
+
+
+Column.PropTypes = {
+  xSmall: _react2.default.PropTypes.string,
+  small: _react2.default.PropTypes.string,
+  medium: _react2.default.PropTypes.string,
+  large: _react2.default.PropTypes.string,
+  padding: _react2.default.PropTypes.string
+};
 
 /***/ }),
 /* 88 */
@@ -10978,6 +10997,11 @@ var Row = function (_Component) {
 }(_react.Component);
 
 exports.default = Row;
+
+
+Row.PropTypes = {
+  maxWidth: _react2.default.PropTypes.string
+};
 
 /***/ }),
 /* 89 */
@@ -24206,38 +24230,76 @@ var App = function (_Component) {
 	_createClass(App, [{
 		key: 'render',
 		value: function render() {
+			var defaultStyles = {
+				fontFamily: 'sans-serif'
+			};
+
 			var styles = {
 				padding: '1rem',
 				backgroundColor: 'orange',
 				marginBottom: '0.5rem'
 			};
 			return _react2.default.createElement(
-				_index.Row,
-				{ maxWidth: '70rem' },
+				'div',
+				{ style: defaultStyles },
 				_react2.default.createElement(
-					_index.Column,
-					{ large: '2', medium: '1', centered: true },
+					_index.Row,
+					null,
+					this.state.items.map(function (item, index) {
+						return _react2.default.createElement(
+							_index.Column,
+							{
+								className: 'someOtherClass',
+								key: item.id,
+								xSmall: '1',
+								small: '2',
+								medium: '3',
+								large: '4',
+								padding: '10px'
+							},
+							_react2.default.createElement(
+								'div',
+								{ style: styles },
+								item.text
+							)
+						);
+					})
+				),
+				_react2.default.createElement('hr', null),
+				_react2.default.createElement(
+					_index.Row,
+					null,
 					_react2.default.createElement(
-						_index.Row,
-						null,
-						this.state.items.map(function (item, index) {
-							return _react2.default.createElement(
+						_index.Column,
+						{ centered: true, small: '1', medium: '2', large: '2' },
+						_react2.default.createElement(
+							_index.Row,
+							null,
+							_react2.default.createElement(
 								_index.Column,
-								{
-									className: 'someOtherClass',
-									key: item.id,
-									small: '2',
-									medium: '4',
-									large: '2',
-									padding: '10px'
-								},
+								{ small: '1' },
 								_react2.default.createElement(
-									'div',
-									{ style: styles },
-									item.text
+									'h1',
+									null,
+									'This is a title'
+								),
+								_react2.default.createElement(
+									'p',
+									null,
+									'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+								),
+								_react2.default.createElement(
+									'p',
+									null,
+									'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+								),
+								_react2.default.createElement(
+									'p',
+									null,
+									'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 								)
-							);
-						})
+							)
+						)
 					)
 				)
 			);

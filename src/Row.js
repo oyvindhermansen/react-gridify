@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { css } from 'glamor'
 
 export default class Row extends Component {
@@ -28,4 +28,8 @@ export default class Row extends Component {
       </div>
     )
   }
+}
+
+Row.PropTypes = {
+  maxWidth: React.PropTypes.string,
 }
