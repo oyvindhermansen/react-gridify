@@ -10966,6 +10966,15 @@ var Column = function (_Component) {
   }, {
     key: 'smallify',
     value: function smallify(gridSize) {
+      /*
+      let currentType = ''
+      if (type === 'medium') {
+        currentType = '@media(max-width: 900px)'
+      } else if (type === 'small') {
+        currentType = '@media(max-width: 600px)'
+      }
+      */
+
       switch (gridSize) {
         case "1":
           return (0, _glamor.css)({
@@ -11055,20 +11064,41 @@ var Column = function (_Component) {
       }
     }
   }, {
+    key: 'paddify',
+    value: function paddify(padding) {
+      var p = (0, _glamor.css)({
+        boxSizing: 'border-box',
+        paddingLeft: '5px',
+        paddingRight: '5px'
+      });
+      if (padding) {
+        p = (0, _glamor.css)({
+          boxSizing: 'border-box',
+          paddingLeft: padding,
+          paddingRight: padding
+        });
+      }
+      return p;
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _props = this.props,
           small = _props.small,
           medium = _props.medium,
           large = _props.large,
-          children = _props.children;
+          padding = _props.padding,
+          children = _props.children,
+          className = _props.className;
 
+
+      var additionalClassNames = className ? className : '';
 
       return _react2.default.createElement(
         'div',
         _extends({
-          className: 'column'
-        }, this.largify(large), this.mediumify(medium), this.smallify(small)),
+          className: 'column ' + additionalClassNames
+        }, this.largify(large), this.mediumify(medium), this.smallify(small), this.paddify(padding)),
         children
       );
     }
@@ -11111,28 +11141,38 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Row = function (_Component) {
   _inherits(Row, _Component);
 
-  function Row(props) {
+  function Row() {
     _classCallCheck(this, Row);
 
-    var _this = _possibleConstructorReturn(this, (Row.__proto__ || Object.getPrototypeOf(Row)).call(this, props));
-
-    _this.defaultStyles = (0, _glamor.css)({
-      maxWidth: '64rem',
-      width: '100%',
-      margin: '0 auto',
-      display: 'table'
-    });
-    return _this;
+    return _possibleConstructorReturn(this, (Row.__proto__ || Object.getPrototypeOf(Row)).apply(this, arguments));
   }
 
   _createClass(Row, [{
+    key: 'setStyles',
+    value: function setStyles(maxWidth) {
+      var styles = {
+        maxWidth: '64rem',
+        width: '100%',
+        margin: '0 auto',
+        display: 'table'
+      };
+
+      if (maxWidth) {
+        styles = Object.assign(styles, { maxWidth: maxWidth });
+      }
+
+      return (0, _glamor.css)(styles);
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var children = this.props.children;
+      var _props = this.props,
+          children = _props.children,
+          maxWidth = _props.maxWidth;
 
       return _react2.default.createElement(
         'div',
-        _extends({ className: 'row' }, this.defaultStyles),
+        _extends({ className: 'row' }, this.setStyles(maxWidth)),
         children
       );
     }
@@ -24372,7 +24412,6 @@ var App = function (_Component) {
 		value: function render() {
 			var styles = {
 				padding: '1rem',
-				margin: '0.5rem',
 				backgroundColor: 'orange'
 			};
 			return _react2.default.createElement(
@@ -24380,11 +24419,11 @@ var App = function (_Component) {
 				null,
 				_react2.default.createElement(
 					_index.Row,
-					null,
+					{ maxWidth: '70rem' },
 					this.state.items.map(function (item, index) {
 						return _react2.default.createElement(
 							_index.Column,
-							{ key: item.id, small: '2', medium: '6', large: '12' },
+							{ className: 'someOtherClass', key: item.id, small: '2', medium: '6', large: '12', padding: '10px' },
 							_react2.default.createElement(
 								'div',
 								{ style: styles },

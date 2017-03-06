@@ -175,7 +175,7 @@ export default class Column extends Component {
     }
   }
 
-  smallify(gridSize, type) {
+  smallify(gridSize) {
     /*
     let currentType = ''
     if (type === 'medium') {
@@ -274,15 +274,34 @@ export default class Column extends Component {
     }
   }
 
+  paddify(padding) {
+    let p = css({
+      boxSizing: 'border-box',
+      paddingLeft: '5px',
+      paddingRight: '5px'
+    })
+    if (padding) {
+      p = css({
+        boxSizing: 'border-box',
+        paddingLeft: padding,
+        paddingRight: padding
+      })
+    }
+    return p
+  }
+
   render() {
-    const { small, medium, large, children } = this.props
+    const { small, medium, large, padding, children, className } = this.props
+
+    const additionalClassNames = className ? className : ''
 
     return (
       <div
-        className="column"
+        className={`column ${additionalClassNames}`}
         {...this.largify(large)}
         {...this.mediumify(medium)}
         {...this.smallify(small)}
+        {...this.paddify(padding)}
       >
         {children}
       </div>

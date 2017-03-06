@@ -27,16 +27,15 @@ class App extends Component {
 	render() {
 		const styles = {
 			padding: '1rem',
-			margin: '0.5rem',
 			backgroundColor: 'orange'
 		}
 		return (
 			<div>
-				<Row>
+				<Row maxWidth="70rem">
 					{
 						this.state.items.map((item, index) => {
 							return (
-								<Column key={item.id} small="2" medium="6" large="12">
+								<Column className="someOtherClass" key={item.id} small="2" medium="6" large="12" padding="10px">
 									<div style={styles}>{item.text}</div>
 								</Column>
 							)

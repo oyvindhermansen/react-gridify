@@ -2,20 +2,28 @@ import React, { Component } from 'react';
 import { css } from 'glamor';
 
 export default class Row extends Component {
-  constructor(props) {
-    super(props);
-    this.defaultStyles = css({
+  setStyles(maxWidth) {
+    let styles = {
       maxWidth: '64rem',
       width: '100%',
       margin: '0 auto',
       display: 'table'
-    })
+    }
+
+    if (maxWidth) {
+      styles = Object.assign(
+        styles,
+        { maxWidth: maxWidth }
+      )
+    }
+
+    return css(styles)
   }
 
   render() {
-    const { children } = this.props;
+    const { children, maxWidth } = this.props;
     return (
-      <div className="row" {...this.defaultStyles}>
+      <div className="row" {...this.setStyles(maxWidth)}>
         {children}
       </div>
     )
