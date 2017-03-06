@@ -7,34 +7,42 @@ export default class Column extends Component {
   }
 
   largify(gridSize) {
-    const styles = css({
-      width: `${this.calculateWidth(gridSize)}%`,
-      float: 'left'
-    })
+    let styles = {}
 
-    return styles
+    if (gridSize) {
+      styles = {
+        width: `${this.calculateWidth(gridSize)}%`,
+        float: 'left'
+      }
+    } else {
+      styles = {
+        width: `100%`,
+      }
+    }
+
+    return css(styles)
   }
 
   mediumify(gridSize) {
-    const styles = css({
-      '@media(max-width: 900px)': {
-        width: `${this.calculateWidth(gridSize)}%`,
-        float: 'left'
-      }
-    })
-
-    return styles
+    if (gridSize) {
+      return css({
+        '@media(max-width: 900px)': {
+          width: `${this.calculateWidth(gridSize)}%`,
+          float: 'left'
+        }
+      })
+    }
   }
 
   smallify(gridSize) {
-    const styles = css({
-      '@media(max-width: 600px)': {
-        width: `${this.calculateWidth(gridSize)}%`,
-        float: 'left'
-      }
-    })
-
-    return styles
+    if (gridSize) {
+      return css({
+        '@media(max-width: 600px)': {
+          width: `${this.calculateWidth(gridSize)}%`,
+          float: 'left'
+        }
+      })
+    }
   }
 
   paddify(padding) {
