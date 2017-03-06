@@ -10811,264 +10811,39 @@ var Column = function (_Component) {
   _createClass(Column, [{
     key: 'largify',
     value: function largify(gridSize) {
+      var gridWidth = 100 / gridSize;
+      var styles = (0, _glamor.css)({
+        width: gridWidth + '%',
+        float: 'left'
+      });
 
-      var styles = { width: '100%' };
-
-      switch (gridSize) {
-        case "1":
-          return (0, _glamor.css)(_extends({}, styles, {
-            width: '100%',
-            float: 'left'
-          }));
-        case "2":
-          return (0, _glamor.css)(_extends({}, styles, {
-            width: '50%',
-            float: 'left'
-          }));
-        case "3":
-          return (0, _glamor.css)(_extends({}, styles, {
-            width: '33.33332%',
-            float: 'left'
-          }));
-        case "4":
-          return (0, _glamor.css)(_extends({}, styles, {
-            width: '25%',
-            float: 'left'
-          }));
-        case "5":
-          return (0, _glamor.css)(_extends({}, styles, {
-            width: '20%',
-            float: 'left'
-          }));
-        case "6":
-          return (0, _glamor.css)(_extends({}, styles, {
-            width: '16.666666666667%',
-            float: 'left'
-          }));
-        case "7":
-          return (0, _glamor.css)(_extends({}, styles, {
-            width: '14.28571428%',
-            float: 'left'
-          }));
-        case "8":
-          return (0, _glamor.css)(_extends({}, styles, {
-            width: '12.5%',
-            float: 'left'
-          }));
-        case "9":
-          return (0, _glamor.css)(_extends({}, styles, {
-            width: '11.111111111%',
-            float: 'left'
-          }));
-        case "10":
-          return (0, _glamor.css)(_extends({}, styles, {
-            width: '10%',
-            float: 'left'
-          }));
-        case "11":
-          return (0, _glamor.css)(_extends({}, styles, {
-            width: '9.0909090909%',
-            float: 'left'
-          }));
-        case "12":
-          return (0, _glamor.css)(_extends({}, styles, {
-            width: '8.33333333%',
-            float: 'left'
-          }));
-        default:
-          return (0, _glamor.css)(styles);
-      }
+      return styles;
     }
   }, {
     key: 'mediumify',
     value: function mediumify(gridSize) {
-      switch (gridSize) {
-        case "1":
-          return (0, _glamor.css)({
-            '@media(max-width: 900px)': {
-              width: '100%'
-            }
-          });
-        case "2":
-          return (0, _glamor.css)({
-            '@media(max-width: 900px)': {
-              width: '50%',
-              float: 'left'
-            }
-          });
-        case "3":
-          return (0, _glamor.css)({
-            '@media(max-width: 900px)': {
-              width: '33.33332%',
-              float: 'left'
-            }
-          });
-        case "4":
-          return (0, _glamor.css)({
-            '@media(max-width: 900px)': {
-              width: '25%',
-              float: 'left'
-            }
-          });
-        case "5":
-          return (0, _glamor.css)({
-            '@media(max-width: 900px)': {
-              width: '20%',
-              float: 'left'
-            }
-          });
-        case "6":
-          return (0, _glamor.css)({
-            '@media(max-width: 900px)': {
-              width: '16.666666666667%',
-              float: 'left'
-            }
-          });
-        case "7":
-          return (0, _glamor.css)({
-            '@media(max-width: 900px)': {
-              width: '14.28571428%',
-              float: 'left'
-            }
-          });
-        case "8":
-          return (0, _glamor.css)({
-            '@media(max-width: 900px)': {
-              width: '12.5%',
-              float: 'left'
-            }
-          });
-        case "9":
-          return (0, _glamor.css)({
-            '@media(max-width: 900px)': {
-              width: '11.111111111%',
-              float: 'left'
-            }
-          });
-        case "10":
-          return (0, _glamor.css)({
-            '@media(max-width: 900px)': {
-              width: '10%',
-              float: 'left'
-            }
-          });
-        case "11":
-          return (0, _glamor.css)({
-            '@media(max-width: 900px)': {
-              width: '9.0909090909%',
-              float: 'left'
-            }
-          });
-        case "12":
-          return (0, _glamor.css)({
-            '@media(max-width: 900px)': {
-              width: '8.33333333%',
-              float: 'left'
-            }
-          });
-        default:
-          return (0, _glamor.css)({ width: '100%' });
-      }
+      var gridWidth = 100 / gridSize;
+      var styles = (0, _glamor.css)({
+        '@media(max-width: 900px)': {
+          width: gridWidth + '%',
+          float: 'left'
+        }
+      });
+
+      return styles;
     }
   }, {
     key: 'smallify',
     value: function smallify(gridSize) {
-      /*
-      let currentType = ''
-      if (type === 'medium') {
-        currentType = '@media(max-width: 900px)'
-      } else if (type === 'small') {
-        currentType = '@media(max-width: 600px)'
-      }
-      */
+      var gridWidth = 100 / gridSize;
+      var styles = (0, _glamor.css)({
+        '@media(max-width: 600px)': {
+          width: gridWidth + '%',
+          float: 'left'
+        }
+      });
 
-      switch (gridSize) {
-        case "1":
-          return (0, _glamor.css)({
-            '@media(max-width: 600px)': {
-              width: '100%'
-            }
-          });
-        case "2":
-          return (0, _glamor.css)({
-            '@media(max-width: 600px)': {
-              width: '50%',
-              float: 'left'
-            }
-          });
-        case "3":
-          return (0, _glamor.css)({
-            '@media(max-width: 600px)': {
-              width: '33.33332%',
-              float: 'left'
-            }
-          });
-        case "4":
-          return (0, _glamor.css)({
-            '@media(max-width: 600px)': {
-              width: '25%',
-              float: 'left'
-            }
-          });
-        case "5":
-          return (0, _glamor.css)({
-            '@media(max-width: 600px)': {
-              width: '20%',
-              float: 'left'
-            }
-          });
-        case "6":
-          return (0, _glamor.css)({
-            '@media(max-width: 600px)': {
-              width: '16.666666666667%',
-              float: 'left'
-            }
-          });
-        case "7":
-          return (0, _glamor.css)({
-            '@media(max-width: 600px)': {
-              width: '14.28571428%',
-              float: 'left'
-            }
-          });
-        case "8":
-          return (0, _glamor.css)({
-            '@media(max-width: 600px)': {
-              width: '12.5%',
-              float: 'left'
-            }
-          });
-        case "9":
-          return (0, _glamor.css)({
-            '@media(max-width: 600px)': {
-              width: '11.111111111%',
-              float: 'left'
-            }
-          });
-        case "10":
-          return (0, _glamor.css)({
-            '@media(max-width: 600px)': {
-              width: '10%',
-              float: 'left'
-            }
-          });
-        case "11":
-          return (0, _glamor.css)({
-            '@media(max-width: 600px)': {
-              width: '9.0909090909%',
-              float: 'left'
-            }
-          });
-        case "12":
-          return (0, _glamor.css)({
-            '@media(max-width: 600px)': {
-              width: '8.33333333%',
-              float: 'left'
-            }
-          });
-        default:
-          return (0, _glamor.css)({ width: '100%' });
-      }
+      return styles;
     }
   }, {
     key: 'paddify',

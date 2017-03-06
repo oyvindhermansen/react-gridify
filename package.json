@@ -30,6 +30,7 @@
     "babel-preset-stage-0": "^6.16.0",
     "babel-register": "^6.18.0",
     "babel-watch": "^2.0.6",
+    "cross-env": "^3.2.3",
     "webpack": "^2.2.0-rc.3"
   },
   "dependencies": {
