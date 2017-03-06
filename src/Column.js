@@ -6,14 +6,28 @@ export default class Column extends Component {
     return 100 / size
   }
 
-  largify(gridSize) {
+  setStandardStyles(columnNumber) {
+    const { centered } = this.props
+    if (centered) {
+      return {
+        width: `${this.calculateWidth(columnNumber)}%`,
+        margin: '0 auto',
+        position: 'relative'
+      }
+    } else {
+      return {
+        width: `${this.calculateWidth(columnNumber)}%`,
+        float: 'left',
+        position: 'relative'
+      }
+    }
+  }
+
+  largify(columnNumber) {
     let styles = {}
 
-    if (gridSize) {
-      styles = {
-        width: `${this.calculateWidth(gridSize)}%`,
-        float: 'left'
-      }
+    if (columnNumber) {
+      styles = this.setStandardStyles(columnNumber)
     } else {
       styles = {
         width: `100%`,
@@ -23,24 +37,22 @@ export default class Column extends Component {
     return css(styles)
   }
 
-  mediumify(gridSize) {
-    if (gridSize) {
+  mediumify(columnNumber) {
+    if (columnNumber) {
       return css({
-        '@media(max-width: 900px)': {
-          width: `${this.calculateWidth(gridSize)}%`,
-          float: 'left'
-        }
+        '@media(max-width: 900px)': this.setStandardStyles(
+          columnNumber
+        )
       })
     }
   }
 
-  smallify(gridSize) {
-    if (gridSize) {
+  smallify(columnNumber) {
+    if (columnNumber) {
       return css({
-        '@media(max-width: 600px)': {
-          width: `${this.calculateWidth(gridSize)}%`,
-          float: 'left'
-        }
+        '@media(max-width: 600px)': this.setStandardStyles(
+          columnNumber
+        )
       })
     }
   }
@@ -66,6 +78,7 @@ export default class Column extends Component {
       small,
       medium,
       large,
+      centered,
       padding,
       className,
       children

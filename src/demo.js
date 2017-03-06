@@ -33,22 +33,24 @@ class App extends Component {
 		return (
 			<div>
 				<Row maxWidth="70rem">
-					{
-						this.state.items.map((item, index) => {
-							return (
-								<Column
-									className="someOtherClass"
-									key={item.id}
-									small="2"
-									medium="6"
-									large="12"
-									padding="10px"
-								>
-									<div style={styles}>{item.text}</div>
-								</Column>
-							)
-						})
-					}
+					<Column large="3" medium="1" centered>
+						{
+							this.state.items.map((item, index) => {
+								return (
+									<Column
+										className="someOtherClass"
+										key={item.id}
+										small="2"
+										medium="4"
+										large="2"
+										padding="10px"
+									>
+										<div style={styles}>{item.text}</div>
+									</Column>
+								)
+							})
+						}
+					</Column>
 				</Row>
 			</div>
 		)
