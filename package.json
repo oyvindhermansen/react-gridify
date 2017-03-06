@@ -16,10 +16,12 @@
   },
   "keywords": [
     "react",
-    "grid",
-    "foundation"
+    "grid"
   ],
-  "author": "Øyvind Hermansen",
+  "authors": [
+    "Øyvind Hermansen",
+    "Kristian Normand"
+  ],
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.18.0",
