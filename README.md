@@ -1,5 +1,5 @@
-# React Foundation Grid
-- Foundation's grid as React Components
+# React Gridify
+<i>A very simple grid maker in form of React Components</i>
 
 
 ### Current API
@@ -19,8 +19,6 @@ import { Row, Column } from 'react-foundation-grid'
 
 ### Install it locally
 ```
-$ git clone `repo`
+$ git clone https://github.com/oyvindhermansen/react-gridify.git
 $ npm install
 ```
-# react-foundation-grid
-# react-gridify

@@ -1,7 +1,7 @@
 {
-  "name": "react-foundation-grid",
+  "name": "react-gridify",
   "version": "1.0.0",
-  "description": "Foundation grid in form of React Components",
+  "description": "A very simple grid maker in form of React Components",
   "main": "./lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
