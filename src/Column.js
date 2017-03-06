@@ -1,30 +1,24 @@
 import React, { Component } from 'react'
 import { css } from 'glamor'
 
-/*
-* TODO:
-* Need to cut down to one switch/case for checking sizes.
-* Three switches seems a bit excessive, and I am sure
-* this can be done in a more efficient way.
-*/
-
 export default class Column extends Component {
+  calculateWidth(size) {
+    return 100 / size
+  }
+
   largify(gridSize) {
-    const gridWidth = 100 / gridSize
     const styles = css({
-      width: gridWidth+'%',
+      width: `${this.calculateWidth(gridSize)}%`,
       float: 'left'
     })
 
     return styles
-
   }
 
   mediumify(gridSize) {
-    const gridWidth = 100 / gridSize
     const styles = css({
       '@media(max-width: 900px)': {
-        width: gridWidth+'%',
+        width: `${this.calculateWidth(gridSize)}%`,
         float: 'left'
       }
     })
@@ -33,10 +27,9 @@ export default class Column extends Component {
   }
 
   smallify(gridSize) {
-    const gridWidth = 100 / gridSize
     const styles = css({
       '@media(max-width: 600px)': {
-        width: gridWidth+'%',
+        width: `${this.calculateWidth(gridSize)}%`,
         float: 'left'
       }
     })
@@ -61,7 +54,14 @@ export default class Column extends Component {
   }
 
   render() {
-    const { small, medium, large, padding, children, className } = this.props
+    const {
+      small,
+      medium,
+      large,
+      padding,
+      className,
+      children
+    } = this.props
 
     const additionalClassNames = className ? className : ''
 

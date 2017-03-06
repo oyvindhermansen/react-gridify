@@ -10792,13 +10792,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-/*
-* TODO:
-* Need to cut down to one switch/case for checking sizes.
-* Three switches seems a bit excessive, and I am sure
-* this can be done in a more efficient way.
-*/
-
 var Column = function (_Component) {
   _inherits(Column, _Component);
 
@@ -10809,11 +10802,15 @@ var Column = function (_Component) {
   }
 
   _createClass(Column, [{
+    key: 'calculateWidth',
+    value: function calculateWidth(size) {
+      return 100 / size;
+    }
+  }, {
     key: 'largify',
     value: function largify(gridSize) {
-      var gridWidth = 100 / gridSize;
       var styles = (0, _glamor.css)({
-        width: gridWidth + '%',
+        width: this.calculateWidth(gridSize) + '%',
         float: 'left'
       });
 
@@ -10822,10 +10819,9 @@ var Column = function (_Component) {
   }, {
     key: 'mediumify',
     value: function mediumify(gridSize) {
-      var gridWidth = 100 / gridSize;
       var styles = (0, _glamor.css)({
         '@media(max-width: 900px)': {
-          width: gridWidth + '%',
+          width: this.calculateWidth(gridSize) + '%',
           float: 'left'
         }
       });
@@ -10835,10 +10831,9 @@ var Column = function (_Component) {
   }, {
     key: 'smallify',
     value: function smallify(gridSize) {
-      var gridWidth = 100 / gridSize;
       var styles = (0, _glamor.css)({
         '@media(max-width: 600px)': {
-          width: gridWidth + '%',
+          width: this.calculateWidth(gridSize) + '%',
           float: 'left'
         }
       });
@@ -10870,8 +10865,8 @@ var Column = function (_Component) {
           medium = _props.medium,
           large = _props.large,
           padding = _props.padding,
-          children = _props.children,
-          className = _props.className;
+          className = _props.className,
+          children = _props.children;
 
 
       var additionalClassNames = className ? className : '';
