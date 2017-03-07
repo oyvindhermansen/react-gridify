@@ -9,7 +9,7 @@ import { Row, Column } from 'react-gridify'
 
 <Row maxWidth="960px">
   <Column
-    small="1"
+    small="12"
     medium="6"
     large="12"
     padding="10px"
