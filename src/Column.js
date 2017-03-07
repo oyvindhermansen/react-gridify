@@ -3,7 +3,11 @@ import { css } from 'glamor'
 
 export default class Column extends Component {
   calculateWidth(size) {
-    return 100 / size
+    if (size > 12) {
+      throw new Error(`Expected a number between 1 and 12.`)
+    } else {
+      return (100 / 12) * size
+    }
   }
 
   setStandardStyles(columnNumber) {
@@ -40,7 +44,7 @@ export default class Column extends Component {
   mediumify(columnNumber) {
     if (columnNumber) {
       return css({
-        '@media only screen and (max-width: 64em)': this.setStandardStyles(
+        '@media(max-width: 64rem)': this.setStandardStyles(
           columnNumber
         )
       })
@@ -50,7 +54,7 @@ export default class Column extends Component {
   smallify(columnNumber) {
     if (columnNumber) {
       return css({
-        '@media only screen and (max-width: 40em)': this.setStandardStyles(
+        '@media(max-width: 40rem)': this.setStandardStyles(
           columnNumber
         )
       })
@@ -60,7 +64,7 @@ export default class Column extends Component {
   extraSmallify(columnNumber) {
     if (columnNumber) {
       return css({
-        '@media only screen and (max-width: 25em)': this.setStandardStyles(
+        '@media(max-width: 25rem)': this.setStandardStyles(
           columnNumber
         )
       })
@@ -70,8 +74,8 @@ export default class Column extends Component {
   paddify(padding) {
     let p = css({
       boxSizing: 'border-box',
-      paddingLeft: '5px',
-      paddingRight: '5px'
+      paddingLeft: '1rem',
+      paddingRight: '1rem'
     })
     if (padding) {
       p = css({
