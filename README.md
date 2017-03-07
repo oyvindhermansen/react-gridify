@@ -1,5 +1,6 @@
 # React Gridify
 <i>A very simple grid maker in form of React Components</i>
+<small>Inspired by foundations row and column.</small>
 
 
 ### Usage
@@ -8,9 +9,9 @@ import { Row, Column } from 'react-gridify'
 
 <Row maxWidth="960px">
   <Column
-    small="2"
-    medium="4"
-    large="6"
+    small="1"
+    medium="6"
+    large="12"
     padding="10px"
     className="someAdditionalClass"
   >
@@ -23,7 +24,7 @@ import { Row, Column } from 'react-gridify'
 // Might be good for e.g article text width
 
   <Row>
-    <Column medium="1" large="2" centered>
+    <Column small="12" large="10" centered>
       <Row>
         <Column>
           <h1>Title<h1>
@@ -33,6 +34,9 @@ import { Row, Column } from 'react-gridify'
     </Column>
   </Row>
 ```
+
+### Pro tip!
+column with xSmall / small / medium / large as 12 is 100%.
 
 ### API
 Component | Props

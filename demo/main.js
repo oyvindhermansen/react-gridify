@@ -10842,14 +10842,16 @@ var Column = function (_Component) {
         };
       }
 
-      return (0, _glamor.css)(styles);
+      return (0, _glamor.css)({
+        '@media screen and (min-width: 64rem)': styles
+      });
     }
   }, {
     key: 'mediumify',
     value: function mediumify(columnNumber) {
       if (columnNumber) {
         return (0, _glamor.css)({
-          '@media(max-width: 64rem)': this.setStandardStyles(columnNumber)
+          '@media screen and (max-width: 64rem) and (min-width: 40rem)': this.setStandardStyles(columnNumber)
         });
       }
     }
@@ -10858,7 +10860,7 @@ var Column = function (_Component) {
     value: function smallify(columnNumber) {
       if (columnNumber) {
         return (0, _glamor.css)({
-          '@media(max-width: 40rem)': this.setStandardStyles(columnNumber)
+          '@media screen and (max-width: 40rem) and (min-width: 25rem)': this.setStandardStyles(columnNumber)
         });
       }
     }
@@ -10867,7 +10869,7 @@ var Column = function (_Component) {
     value: function extraSmallify(columnNumber) {
       if (columnNumber) {
         return (0, _glamor.css)({
-          '@media(max-width: 25rem)': this.setStandardStyles(columnNumber)
+          '@media screen and (max-width: 25rem) and (min-width: 1rem)': this.setStandardStyles(columnNumber)
         });
       }
     }

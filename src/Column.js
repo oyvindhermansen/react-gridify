@@ -37,14 +37,16 @@ export default class Column extends Component {
         width: `100%`,
       }
     }
-
-    return css(styles)
+    
+    return css({
+      '@media screen and (min-width: 64rem)': styles
+    })
   }
 
   mediumify(columnNumber) {
     if (columnNumber) {
       return css({
-        '@media(max-width: 64rem)': this.setStandardStyles(
+        '@media screen and (max-width: 64rem) and (min-width: 40rem)': this.setStandardStyles(
           columnNumber
         )
       })
@@ -54,7 +56,7 @@ export default class Column extends Component {
   smallify(columnNumber) {
     if (columnNumber) {
       return css({
-        '@media(max-width: 40rem)': this.setStandardStyles(
+        '@media screen and (max-width: 40rem) and (min-width: 25rem)': this.setStandardStyles(
           columnNumber
         )
       })
@@ -64,7 +66,7 @@ export default class Column extends Component {
   extraSmallify(columnNumber) {
     if (columnNumber) {
       return css({
-        '@media(max-width: 25rem)': this.setStandardStyles(
+        '@media screen and (max-width: 25rem) and (min-width: 1rem)': this.setStandardStyles(
           columnNumber
         )
       })
