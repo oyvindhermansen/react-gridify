@@ -1,41 +1,41 @@
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-
+/******/
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
 /******/ 			l: false,
 /******/ 			exports: {}
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
-
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
 /******/ 	// identity function for calling harmony imports with the correct context
 /******/ 	__webpack_require__.i = function(value) { return value; };
-
+/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -46,7 +46,7 @@
 /******/ 			});
 /******/ 		}
 /******/ 	};
-
+/******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -55,13 +55,13 @@
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
 /******/ 	};
-
+/******/
 /******/ 	// Object.prototype.hasOwnProperty.call
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "/";
-
+/******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 189);
 /******/ })
@@ -10736,7 +10736,7 @@ module.exports = ReactPropTypesSecret;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 exports.Column = exports.Row = undefined;
 
@@ -10776,8 +10776,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _react = __webpack_require__(31);
 
 var _react2 = _interopRequireDefault(_react);
@@ -10786,149 +10784,80 @@ var _glamor = __webpack_require__(60);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Column = function (_Component) {
-  _inherits(Column, _Component);
-
-  function Column() {
-    _classCallCheck(this, Column);
-
-    return _possibleConstructorReturn(this, (Column.__proto__ || Object.getPrototypeOf(Column)).apply(this, arguments));
+var calculateWidth = function calculateWidth(size) {
+  if (size > 12) {
+    throw new Error('Expected a number between 1 and 12.');
+  } else {
+    return 100 / 12 * size;
   }
+};
 
-  _createClass(Column, [{
-    key: 'calculateWidth',
-    value: function calculateWidth(size) {
-      if (size > 12) {
-        throw new Error('Expected a number between 1 and 12.');
-      } else {
-        return 100 / 12 * size;
-      }
-    }
-  }, {
-    key: 'setStandardStyles',
-    value: function setStandardStyles(columnNumber) {
-      var centered = this.props.centered;
+var setCalculatedWidth = function setCalculatedWidth() {
+  var columnNumber = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '12';
+  return {
+    width: calculateWidth(columnNumber) + '%'
+  };
+};
 
-      if (centered) {
-        return {
-          width: this.calculateWidth(columnNumber) + '%',
-          margin: '0 auto',
-          position: 'relative'
-        };
-      } else {
-        return {
-          width: this.calculateWidth(columnNumber) + '%',
-          float: 'left',
-          position: 'relative'
-        };
-      }
-    }
-  }, {
-    key: 'largify',
-    value: function largify(columnNumber) {
-      var styles = {};
+var setCenteredAndPadding = function setCenteredAndPadding(centered, padding) {
+  return (0, _glamor.css)(_extends({
+    position: 'relative',
+    boxSizing: 'border-box'
+  }, centered ? { margin: 'auto' } : { float: 'left' }, padding ? { padding: padding } : { padding: '0.5rem' }));
+};
 
-      if (columnNumber) {
-        styles = this.setStandardStyles(columnNumber);
-      } else {
-        styles = {
-          width: '100%'
-        };
-      }
+var setLarge = function setLarge(columnNumber) {
+  if (columnNumber) {
+    return (0, _glamor.css)({
+      '@media screen and (min-width: 64rem)': setCalculatedWidth(columnNumber)
+    });
+  }
+};
 
-      return (0, _glamor.css)({
-        '@media screen and (min-width: 64rem)': styles
-      });
-    }
-  }, {
-    key: 'mediumify',
-    value: function mediumify(columnNumber) {
-      if (columnNumber) {
-        return (0, _glamor.css)({
-          '@media screen and (max-width: 64rem) and (min-width: 40rem)': this.setStandardStyles(columnNumber)
-        });
-      }
-    }
-  }, {
-    key: 'smallify',
-    value: function smallify(columnNumber) {
-      if (columnNumber) {
-        return (0, _glamor.css)({
-          '@media screen and (max-width: 40rem) and (min-width: 25rem)': this.setStandardStyles(columnNumber)
-        });
-      }
-    }
-  }, {
-    key: 'extraSmallify',
-    value: function extraSmallify(columnNumber) {
-      if (columnNumber) {
-        return (0, _glamor.css)({
-          '@media screen and (max-width: 25rem) and (min-width: 1rem)': this.setStandardStyles(columnNumber)
-        });
-      }
-    }
-  }, {
-    key: 'paddify',
-    value: function paddify(padding) {
-      var p = (0, _glamor.css)({
-        boxSizing: 'border-box',
-        paddingLeft: '1rem',
-        paddingRight: '1rem'
-      });
-      if (padding) {
-        p = (0, _glamor.css)({
-          boxSizing: 'border-box',
-          paddingLeft: padding,
-          paddingRight: padding
-        });
-      }
-      return p;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          xSmall = _props.xSmall,
-          small = _props.small,
-          medium = _props.medium,
-          large = _props.large,
-          centered = _props.centered,
-          padding = _props.padding,
-          className = _props.className,
-          children = _props.children;
+var setMedium = function setMedium(columnNumber) {
+  if (columnNumber) {
+    return (0, _glamor.css)({
+      '@media screen and (max-width: 64rem) and (min-width: 40rem)': setCalculatedWidth(columnNumber)
+    });
+  }
+};
 
+var setSmall = function setSmall(columnNumber) {
+  if (columnNumber) {
+    return (0, _glamor.css)({
+      '@media screen and (max-width: 40rem) and (min-width: 25rem)': setCalculatedWidth(columnNumber)
+    });
+  }
+};
 
-      var additionalClassNames = className ? className : '';
+var setXSmall = function setXSmall(columnNumber) {
+  if (columnNumber) {
+    return (0, _glamor.css)({
+      '@media screen and (max-width: 25rem) and (min-width: 1rem)': setCalculatedWidth(columnNumber)
+    });
+  }
+};
 
-      return _react2.default.createElement(
-        'div',
-        _extends({
-          className: 'column ' + additionalClassNames
-        }, this.largify(large), this.mediumify(medium), this.smallify(small), this.extraSmallify(xSmall), this.paddify(padding)),
-        children
-      );
-    }
-  }]);
+var Column = function Column(_ref) {
+  var xSmall = _ref.xSmall,
+      small = _ref.small,
+      medium = _ref.medium,
+      large = _ref.large,
+      centered = _ref.centered,
+      padding = _ref.padding,
+      className = _ref.className,
+      children = _ref.children;
 
-  return Column;
-}(_react.Component);
+  return _react2.default.createElement(
+    'div',
+    _extends({
+      className: 'column ' + className
+    }, setCenteredAndPadding(centered, padding), setLarge(large), setMedium(medium), setSmall(small), setXSmall(xSmall)),
+    children
+  );
+};
 
 exports.default = Column;
-
-
-Column.PropTypes = {
-  xSmall: _react2.default.PropTypes.string,
-  small: _react2.default.PropTypes.string,
-  medium: _react2.default.PropTypes.string,
-  large: _react2.default.PropTypes.string,
-  padding: _react2.default.PropTypes.string
-};
 
 /***/ }),
 /* 88 */
@@ -10943,8 +10872,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _react = __webpack_require__(31);
 
 var _react2 = _interopRequireDefault(_react);
@@ -10953,61 +10880,26 @@ var _glamor = __webpack_require__(60);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var setDefaultRowStyles = function setDefaultRowStyles(maxWidth) {
+  return (0, _glamor.css)(_extends({}, maxWidth ? { maxWidth: maxWidth } : { maxWidth: '64rem' }, {
+    width: '100%',
+    margin: '0 auto',
+    display: 'table'
+  }));
+};
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+var Row = function Row(_ref) {
+  var maxWidth = _ref.maxWidth,
+      children = _ref.children;
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Row = function (_Component) {
-  _inherits(Row, _Component);
-
-  function Row() {
-    _classCallCheck(this, Row);
-
-    return _possibleConstructorReturn(this, (Row.__proto__ || Object.getPrototypeOf(Row)).apply(this, arguments));
-  }
-
-  _createClass(Row, [{
-    key: 'setStyles',
-    value: function setStyles(maxWidth) {
-      var styles = {
-        maxWidth: '64rem',
-        width: '100%',
-        margin: '0 auto',
-        display: 'table'
-      };
-
-      if (maxWidth) {
-        styles = Object.assign(styles, { maxWidth: maxWidth });
-      }
-
-      return (0, _glamor.css)(styles);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          children = _props.children,
-          maxWidth = _props.maxWidth;
-
-      return _react2.default.createElement(
-        'div',
-        _extends({ className: 'row' }, this.setStyles(maxWidth)),
-        children
-      );
-    }
-  }]);
-
-  return Row;
-}(_react.Component);
+  return _react2.default.createElement(
+    'div',
+    _extends({ className: 'row' }, setDefaultRowStyles(maxWidth)),
+    children
+  );
+};
 
 exports.default = Row;
-
-
-Row.PropTypes = {
-  maxWidth: _react2.default.PropTypes.string
-};
 
 /***/ }),
 /* 89 */
@@ -24220,144 +24112,154 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var App = function (_Component) {
-	_inherits(App, _Component);
+  _inherits(App, _Component);
 
-	function App(props) {
-		_classCallCheck(this, App);
+  function App(props) {
+    _classCallCheck(this, App);
 
-		var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
-		_this.state = {
-			items: [{ id: 1, text: 'Hello World 1' }, { id: 2, text: 'Hello World 2' }, { id: 3, text: 'Hello World 3' }, { id: 4, text: 'Hello World 4' }, { id: 5, text: 'Hello World 5' }, { id: 6, text: 'Hello World 6' }, { id: 7, text: 'Hello World 7' }, { id: 8, text: 'Hello World 8' }, { id: 9, text: 'Hello World 9' }, { id: 10, text: 'Hello World 10' }, { id: 11, text: 'Hello World 11' }, { id: 12, text: 'Hello World 12' }]
-		};
-		return _this;
-	}
+    _this.state = {
+      items: [{ id: 1, text: 'Hello World 1' }, { id: 2, text: 'Hello World 2' }, { id: 3, text: 'Hello World 3' }, { id: 4, text: 'Hello World 4' }, { id: 5, text: 'Hello World 5' }, { id: 6, text: 'Hello World 6' }, { id: 7, text: 'Hello World 7' }, { id: 8, text: 'Hello World 8' }, { id: 9, text: 'Hello World 9' }, { id: 10, text: 'Hello World 10' }, { id: 11, text: 'Hello World 11' }, { id: 12, text: 'Hello World 12' }]
+    };
+    return _this;
+  }
 
-	_createClass(App, [{
-		key: 'render',
-		value: function render() {
-			var defaultStyles = {
-				fontFamily: 'sans-serif'
-			};
+  _createClass(App, [{
+    key: 'render',
+    value: function render() {
+      var defaultStyles = {
+        fontFamily: 'sans-serif'
+      };
 
-			var styles = {
-				padding: '1rem',
-				backgroundColor: 'orange',
-				marginBottom: '0.5rem'
-			};
-			return _react2.default.createElement(
-				'div',
-				{ style: defaultStyles },
-				_react2.default.createElement(
-					_index.Row,
-					null,
-					this.state.items.map(function (item, index) {
-						return _react2.default.createElement(
-							_index.Column,
-							{
-								className: 'someOtherClass',
-								key: item.id,
-								xSmall: '12',
-								small: '6',
-								medium: '4',
-								large: '3',
-								padding: '10px'
-							},
-							_react2.default.createElement(
-								'div',
-								{ style: styles },
-								item.text
-							)
-						);
-					})
-				),
-				_react2.default.createElement('hr', null),
-				_react2.default.createElement(
-					_index.Row,
-					null,
-					_react2.default.createElement(
-						_index.Column,
-						{ centered: true, small: '12', medium: '10', large: '8' },
-						_react2.default.createElement(
-							_index.Row,
-							null,
-							_react2.default.createElement(
-								_index.Column,
-								{ small: '12' },
-								_react2.default.createElement(
-									'h1',
-									null,
-									'This is a title'
-								),
-								_react2.default.createElement(
-									'p',
-									null,
-									'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-								),
-								_react2.default.createElement(
-									'p',
-									null,
-									'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-								),
-								_react2.default.createElement(
-									'p',
-									null,
-									'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-								)
-							)
-						)
-					)
-				),
-				_react2.default.createElement('hr', null),
-				_react2.default.createElement(
-					_index.Row,
-					null,
-					_react2.default.createElement(
-						_index.Column,
-						{ xSmall: '12', small: '8', medium: '6', large: '8' },
-						_react2.default.createElement(
-							'div',
-							{ style: { backgroundColor: 'red', padding: '1rem', marginBottom: '1rem' } },
-							'Hello World 1'
-						)
-					),
-					_react2.default.createElement(
-						_index.Column,
-						{ xSmall: '12', small: '4', medium: '6', large: '4' },
-						_react2.default.createElement(
-							'div',
-							{ style: { backgroundColor: 'red', padding: '1rem', marginBottom: '1rem' } },
-							'Hello World 2'
-						)
-					),
-					_react2.default.createElement(
-						_index.Column,
-						{ xSmall: '12', small: '4', medium: '6', large: '4' },
-						_react2.default.createElement(
-							'div',
-							{ style: { backgroundColor: 'red', padding: '1rem' } },
-							'Hello World 3'
-						)
-					),
-					_react2.default.createElement(
-						_index.Column,
-						{ xSmall: '12', small: '8', medium: '6', large: '8' },
-						_react2.default.createElement(
-							'div',
-							{ style: { backgroundColor: 'red', padding: '1rem' } },
-							'Hello World 4'
-						)
-					)
-				)
-			);
-		}
-	}]);
+      var styles = {
+        padding: '1rem',
+        backgroundColor: 'orange',
+        marginBottom: '0.5rem'
+      };
 
-	return App;
+      return _react2.default.createElement(
+        'div',
+        { style: defaultStyles },
+        _react2.default.createElement(
+          _index.Row,
+          null,
+          this.state.items.map(function (item, index) {
+            return _react2.default.createElement(
+              _index.Column,
+              {
+                className: 'someOtherClass',
+                key: item.id,
+                xSmall: '12',
+                small: '6',
+                medium: '4',
+                large: '4',
+                padding: '10px' },
+              _react2.default.createElement(
+                'div',
+                { style: styles },
+                item.text
+              )
+            );
+          })
+        ),
+        _react2.default.createElement('hr', null),
+        _react2.default.createElement(
+          _index.Row,
+          null,
+          _react2.default.createElement(
+            _index.Column,
+            { centered: true, small: '12', medium: '10', large: '8' },
+            _react2.default.createElement(
+              _index.Row,
+              null,
+              _react2.default.createElement(
+                _index.Column,
+                { small: '12' },
+                _react2.default.createElement(
+                  'h1',
+                  null,
+                  'This is a title'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+                )
+              )
+            )
+          )
+        ),
+        _react2.default.createElement('hr', null),
+        _react2.default.createElement(
+          _index.Row,
+          null,
+          _react2.default.createElement(
+            _index.Column,
+            { xSmall: '12', small: '8', medium: '6', large: '8' },
+            _react2.default.createElement(
+              'div',
+              {
+                style: {
+                  backgroundColor: 'red',
+                  padding: '1rem',
+                  marginBottom: '1rem'
+                } },
+              'Hello World 1'
+            )
+          ),
+          _react2.default.createElement(
+            _index.Column,
+            { xSmall: '12', small: '4', medium: '6', large: '4' },
+            _react2.default.createElement(
+              'div',
+              {
+                style: {
+                  backgroundColor: 'red',
+                  padding: '1rem',
+                  marginBottom: '1rem'
+                } },
+              'Hello World 2'
+            )
+          ),
+          _react2.default.createElement(
+            _index.Column,
+            { xSmall: '12', small: '4', medium: '6', large: '4' },
+            _react2.default.createElement(
+              'div',
+              { style: { backgroundColor: 'red', padding: '1rem' } },
+              'Hello World 3'
+            )
+          ),
+          _react2.default.createElement(
+            _index.Column,
+            { xSmall: '12', small: '8', medium: '6', large: '8' },
+            _react2.default.createElement(
+              'div',
+              { style: { backgroundColor: 'red', padding: '1rem' } },
+              'Hello World 4'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return App;
 }(_react.Component);
 
 document.addEventListener('DOMContentLoaded', function () {
-	(0, _reactDom.render)(_react2.default.createElement(App, null), document.getElementById('root'));
+  (0, _reactDom.render)(_react2.default.createElement(App, null), document.getElementById('root'));
 });
 
 /***/ })
