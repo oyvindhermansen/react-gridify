@@ -11,7 +11,7 @@ import { Row, Column } from 'react-gridify'
   <Column
     xSmall="12" // 100%
     small="6" // 50%
-    medium="4" // 33.333332%
+    medium="4" // 33.333333333333336%;
     large="3" // 25%
     padding="10px"
     className="someAdditionalClass"
@@ -22,7 +22,7 @@ import { Row, Column } from 'react-gridify'
 ```
 ### Example usage with centered
 ```javascript
-// Works good when working with article pages etc.
+// Works nicely when working with article pages etc.
 
   <Row>
     <Column small="12" large="10" centered>
@@ -47,6 +47,7 @@ import { Row, Column } from 'react-gridify'
  - large
  - centered
  - padding
+ - className
 
 ### Pro tip!
 `column 12 = 100%`
