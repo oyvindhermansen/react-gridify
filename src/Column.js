@@ -1,127 +1,86 @@
-import React, { Component, PropTypes } from 'react'
-import { css } from 'glamor'
+import React from 'react';
+import { css } from 'glamor';
 
-export default class Column extends Component {
-  calculateWidth(size) {
-    if (size > 12) {
-      throw new Error(`Expected a number between 1 and 12.`)
-    } else {
-      return (100 / 12) * size
-    }
+const calculateWidth = size => {
+  if (size > 12) {
+    throw new Error(`Expected a number between 1 and 12.`);
+  } else {
+    return 100 / 12 * size;
   }
+};
 
-  setStandardStyles(columnNumber) {
-    const { centered } = this.props
-    if (centered) {
-      return {
-        width: `${this.calculateWidth(columnNumber)}%`,
-        margin: '0 auto',
-        position: 'relative'
-      }
-    } else {
-      return {
-        width: `${this.calculateWidth(columnNumber)}%`,
-        float: 'left',
-        position: 'relative'
-      }
-    }
-  }
+const setCalculatedWidth = (columnNumber = '12') => ({
+  width: `${calculateWidth(columnNumber)}%`
+});
 
-  largify(columnNumber) {
-    let styles = {}
+const setCenteredAndPadding = (centered, padding) => css({
+  position: 'relative',
+  boxSizing: 'border-box',
+  ...(centered ? { margin: 'auto' } : { float: 'left' }),
+  ...(padding ? { padding: padding } : { padding: '0.5rem' })
+});
 
-    if (columnNumber) {
-      styles = this.setStandardStyles(columnNumber)
-    } else {
-      styles = {
-        width: `100%`,
-      }
-    }
-    
+const setLarge = columnNumber => {
+  if (columnNumber) {
     return css({
-      '@media screen and (min-width: 64rem)': styles
-    })
+      '@media screen and (min-width: 64rem)': setCalculatedWidth(columnNumber)
+    });
   }
+};
 
-  mediumify(columnNumber) {
-    if (columnNumber) {
-      return css({
-        '@media screen and (max-width: 64rem) and (min-width: 40rem)': this.setStandardStyles(
-          columnNumber
-        )
-      })
-    }
+const setMedium = columnNumber => {
+  if (columnNumber) {
+    return css({
+      '@media screen and (max-width: 64rem) and (min-width: 40rem)': setCalculatedWidth(
+        columnNumber
+      )
+    });
   }
+};
 
-  smallify(columnNumber) {
-    if (columnNumber) {
-      return css({
-        '@media screen and (max-width: 40rem) and (min-width: 25rem)': this.setStandardStyles(
-          columnNumber
-        )
-      })
-    }
+const setSmall = columnNumber => {
+  if (columnNumber) {
+    return css({
+      '@media screen and (max-width: 40rem) and (min-width: 25rem)': setCalculatedWidth(
+        columnNumber
+      )
+    });
   }
+};
 
-  extraSmallify(columnNumber) {
-    if (columnNumber) {
-      return css({
-        '@media screen and (max-width: 25rem) and (min-width: 1rem)': this.setStandardStyles(
-          columnNumber
-        )
-      })
-    }
+const setXSmall = columnNumber => {
+  if (columnNumber) {
+    return css({
+      '@media screen and (max-width: 25rem) and (min-width: 1rem)': setCalculatedWidth(
+        columnNumber
+      )
+    });
   }
+};
 
-  paddify(padding) {
-    let p = css({
-      boxSizing: 'border-box',
-      paddingLeft: '1rem',
-      paddingRight: '1rem'
-    })
-    if (padding) {
-      p = css({
-        boxSizing: 'border-box',
-        paddingLeft: padding,
-        paddingRight: padding
-      })
-    }
-    return p
+const Column = (
+  {
+    xSmall,
+    small,
+    medium,
+    large,
+    centered,
+    padding,
+    className,
+    children
   }
+) => {
+  return (
+    <div
+      className={`column ${className}`}
+      {...setCenteredAndPadding(centered, padding)}
+      {...setLarge(large)}
+      {...setMedium(medium)}
+      {...setSmall(small)}
+      {...setXSmall(xSmall)}>
+      {children}
+    </div>
+  );
+};
 
-  render() {
-    const {
-      xSmall,
-      small,
-      medium,
-      large,
-      centered,
-      padding,
-      className,
-      children
-    } = this.props
-
-    const additionalClassNames = className ? className : ''
-
-    return (
-      <div
-        className={`column ${additionalClassNames}`}
-        {...this.largify(large)}
-        {...this.mediumify(medium)}
-        {...this.smallify(small)}
-        {...this.extraSmallify(xSmall)}
-        {...this.paddify(padding)}
-      >
-        {children}
-      </div>
-    )
-  }
-}
-
-Column.PropTypes = {
-  xSmall: React.PropTypes.string,
-  small: React.PropTypes.string,
-  medium: React.PropTypes.string,
-  large: React.PropTypes.string,
-  padding: React.PropTypes.string,
-}
+export default Column;

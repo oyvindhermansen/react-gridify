@@ -9,19 +9,20 @@ import { Row, Column } from 'react-gridify'
 
 <Row maxWidth="960px">
   <Column
-    small="12"
-    medium="6"
-    large="12"
+    xSmall="12" // 100%
+    small="6" // 50%
+    medium="4" // 33.333333333333336%;
+    large="3" // 25%
     padding="10px"
     className="someAdditionalClass"
   >
-    <SomeCardComponent />
+    <SomeCustomChildComponent />
   </Column>
 </Row>
 ```
 ### Example usage with centered
 ```javascript
-// Might be good for e.g article text width
+// Works nicely when working with article pages etc.
 
   <Row>
     <Column small="12" large="10" centered>
@@ -35,17 +36,29 @@ import { Row, Column } from 'react-gridify'
   </Row>
 ```
 
-### Pro tip!
-column with xSmall / small / medium / large as 12 is 100%.
+### Available props
 
-### API
-Component | Props
---- | --- | ---
-Row | maxWidth
-Column | xSmall, small, medium, large, centered, padding, className
+* <strong>Row</strong>
+  - maxWidth
+* <strong>Column</strong>
+ - xSmall
+ - small
+ - medium
+ - large
+ - centered
+ - padding
+ - className
+
+### Pro tip!
+`column 12 = 100%`
 
 ### Install it locally
 ```
 $ git clone https://github.com/oyvindhermansen/react-gridify.git
 $ npm install
 ```
+
+### Development
+Run `$ npm run build` for compiling up the src-folder
+<br>
+Run `$ npm run demo` for running the webpack-build for demo page.

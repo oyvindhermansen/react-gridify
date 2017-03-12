@@ -1,35 +1,19 @@
-import React, { Component, PropTypes } from 'react'
-import { css } from 'glamor'
+import React, { Component, PropTypes } from 'react';
+import { css } from 'glamor';
 
-export default class Row extends Component {
-  setStyles(maxWidth) {
-    let styles = {
-      maxWidth: '64rem',
-      width: '100%',
-      margin: '0 auto',
-      display: 'table'
-    }
+const setDefaultRowStyles = maxWidth => css({
+  ...(maxWidth ? { maxWidth: maxWidth } : { maxWidth: `64rem` }),
+  width: '100%',
+  margin: '0 auto',
+  display: 'table'
+});
 
-    if (maxWidth) {
-      styles = Object.assign(
-        styles,
-        { maxWidth: maxWidth }
-      )
-    }
+const Row = ({ maxWidth, children }) => {
+  return (
+    <div className="row" {...setDefaultRowStyles(maxWidth)}>
+      {children}
+    </div>
+  );
+};
 
-    return css(styles)
-  }
-
-  render() {
-    const { children, maxWidth } = this.props
-    return (
-      <div className="row" {...this.setStyles(maxWidth)}>
-        {children}
-      </div>
-    )
-  }
-}
-
-Row.PropTypes = {
-  maxWidth: React.PropTypes.string,
-}
+export default Row;
