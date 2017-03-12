@@ -15,7 +15,7 @@ const setCalculatedWidth = (columnNumber = '12') => ({
 
 const setCenteredAndPadding = (centered, padding) => css({
   position: 'relative',
-  boxSizing: `border-box`,
+  boxSizing: 'border-box',
   ...(centered ? { margin: 'auto' } : { float: 'left' }),
   ...(padding ? { padding: padding } : { padding: '0.5rem' })
 });
