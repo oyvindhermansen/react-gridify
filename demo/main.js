@@ -10848,10 +10848,11 @@ var Column = function Column(_ref) {
       className = _ref.className,
       children = _ref.children;
 
+  var additionalClassNames = className ? ' ' + className : '';
   return _react2.default.createElement(
     'div',
     _extends({
-      className: 'column ' + className
+      className: 'column' + additionalClassNames
     }, setCenteredAndPadding(centered, padding), setLarge(large), setMedium(medium), setSmall(small), setXSmall(xSmall)),
     children
   );
