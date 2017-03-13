@@ -70,9 +70,10 @@ const Column = (
     children
   }
 ) => {
+  const additionalClassNames = className ? ` ${className}` : '';
   return (
     <div
-      className={`column ${className}`}
+      className={`column${additionalClassNames}`}
       {...setCenteredAndPadding(centered, padding)}
       {...setLarge(large)}
       {...setMedium(medium)}

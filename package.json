@@ -1,10 +1,10 @@
 {
   "name": "react-gridify",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A very simple grid maker in form of React Components",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage",
     "demo": "webpack",
     "prepublish": "npm run build && npm run demo",
     "demo:watch": "webpack --colors --watch",
@@ -32,6 +32,8 @@
     "babel-preset-stage-0": "^6.16.0",
     "babel-register": "^6.18.0",
     "cross-env": "^3.2.3",
+    "jest": "^19.0.2",
+    "react-test-renderer": "^15.4.2",
     "webpack": "^2.2.0-rc.3"
   },
   "dependencies": {

@@ -1,5 +1,6 @@
 src
 demo
+coverage
 .babelrc
 .gitignore
 webpack.config.babel.js
