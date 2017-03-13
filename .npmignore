@@ -1,6 +1,7 @@
 src
 demo
 coverage
+__tests__
 .babelrc
 .gitignore
 webpack.config.babel.js
