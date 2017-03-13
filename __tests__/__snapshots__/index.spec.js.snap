@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`React gridify Column should match snapshot 1`] = `
+<div
+  className="column"
+  data-css-1lwsn8m=""
+  data-css-1p8eac0=""
+  data-css-1wgphrl=""
+  data-css-7s6x1j=""
+  data-css-b9k42t=""
+>
+  This is children
+</div>
+`;
+
+exports[`React gridify Row should match snapshot 1`] = `
+<div
+  className="row"
+  data-css-g7t3c5=""
+>
+  This is children
+</div>
+`;
