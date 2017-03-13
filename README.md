@@ -2,7 +2,7 @@
 <i>A very simple grid maker in form of React Components</i>
 <small>Inspired by foundations row and column.</small>
 
-[![Build Status](https://travis-ci.org/oyvindhermansen/react-gridify.svg?branch=master)](https://travis-ci.org/oyvindhermansen/react-gridify)
+[![Build Status](https://travis-ci.org/oyvindhermansen/react-gridify.svg?branch=release%40latest)](https://travis-ci.org/oyvindhermansen/react-gridify)
 
 ### Usage
 ```javascript
