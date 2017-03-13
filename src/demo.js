@@ -29,13 +29,25 @@ class App extends Component {
     };
 
     const styles = {
-      padding: '1rem',
-      backgroundColor: 'orange',
-      marginBottom: '0.5rem'
+      backgroundColor: 'darkred',
+      color: '#fff',
+      marginBottom: '1rem',
+      minHeight: '150px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
     };
 
     return (
       <div style={defaultStyles}>
+        <header
+          style={{ background: '#333', padding: '1rem', marginBottom: '1rem' }}>
+          <Row>
+            <Column>
+              <span style={{ color: '#999' }}>Logo</span>
+            </Column>
+          </Row>
+        </header>
         <Row>
           {this.state.items.map((item, index) => {
             return (
@@ -45,14 +57,13 @@ class App extends Component {
                 xSmall="12"
                 small="6"
                 medium="4"
-                large="4"
-                padding="10px">
+                large="3">
                 <div style={styles}>{item.text}</div>
               </Column>
             );
           })}
         </Row>
-        <hr />
+        <br />
         <Row>
           <Column centered small="12" medium="10" large="8">
             <Row>
@@ -71,37 +82,79 @@ class App extends Component {
             </Row>
           </Column>
         </Row>
-        <hr />
+        <br />
         <Row>
           <Column xSmall="12" small="8" medium="6" large="8">
             <div
               style={{
-                backgroundColor: 'red',
+                backgroundColor: 'darkred',
                 padding: '1rem',
                 marginBottom: '1rem'
-              }}>
-              Hello World 1
-            </div>
+              }}
+            />
           </Column>
           <Column xSmall="12" small="4" medium="6" large="4">
             <div
               style={{
-                backgroundColor: 'red',
+                backgroundColor: 'darkred',
                 padding: '1rem',
                 marginBottom: '1rem'
-              }}>
-              Hello World 2
-            </div>
+              }}
+            />
           </Column>
           <Column xSmall="12" small="4" medium="6" large="4">
-            <div style={{ backgroundColor: 'red', padding: '1rem' }}>
-              Hello World 3
-            </div>
+            <div
+              style={{
+                backgroundColor: 'darkred',
+                padding: '1rem',
+                marginBottom: '1rem'
+              }}
+            />
           </Column>
           <Column xSmall="12" small="8" medium="6" large="8">
-            <div style={{ backgroundColor: 'red', padding: '1rem' }}>
-              Hello World 4
-            </div>
+            <div
+              style={{
+                backgroundColor: 'darkred',
+                padding: '1rem',
+                marginBottom: '1rem'
+              }}
+            />
+          </Column>
+          <Column xSmall="12" small="3" medium="6" large="3">
+            <div
+              style={{
+                backgroundColor: 'darkred',
+                padding: '1rem',
+                marginBottom: '1rem'
+              }}
+            />
+          </Column>
+          <Column xSmall="12" small="9" medium="6" large="9">
+            <div
+              style={{
+                backgroundColor: 'darkred',
+                padding: '1rem',
+                marginBottom: '1rem'
+              }}
+            />
+          </Column>
+          <Column xSmall="12" small="5" medium="6" large="9">
+            <div
+              style={{
+                backgroundColor: 'darkred',
+                padding: '1rem',
+                marginBottom: '1rem'
+              }}
+            />
+          </Column>
+          <Column xSmall="12" small="7" medium="6" large="3">
+            <div
+              style={{
+                backgroundColor: 'darkred',
+                padding: '1rem',
+                marginBottom: '1rem'
+              }}
+            />
           </Column>
         </Row>
       </div>

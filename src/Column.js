@@ -17,7 +17,9 @@ const setCenteredAndPadding = (centered, padding) => css({
   position: 'relative',
   boxSizing: 'border-box',
   ...(centered ? { margin: 'auto' } : { float: 'left' }),
-  ...(padding ? { padding: padding } : { padding: '0.5rem' })
+  ...(padding
+    ? { paddingLeft: padding, paddingRight: padding }
+    : { paddingRight: '1rem', paddingLeft: '1rem' })
 });
 
 const setLarge = columnNumber => {

@@ -42,13 +42,13 @@ import { Row, Column } from 'react-gridify'
 * <strong>Row</strong>
   - maxWidth
 * <strong>Column</strong>
- - xSmall
- - small
- - medium
- - large
- - centered
- - padding
- - className
+  - xSmall
+  - small
+  - medium
+  - large
+  - centered
+  - padding
+  - className
 
 ### Pro tip!
 `column 12 = 100%`
@@ -63,3 +63,5 @@ $ npm install
 Run `$ npm run build` for compiling up the src-folder
 <br>
 Run `$ npm run demo` for running the webpack-build for demo page.
+<br>
+Run `$ npm test` for running the tests with Jest.

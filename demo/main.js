@@ -10803,7 +10803,7 @@ var setCenteredAndPadding = function setCenteredAndPadding(centered, padding) {
   return (0, _glamor.css)(_extends({
     position: 'relative',
     boxSizing: 'border-box'
-  }, centered ? { margin: 'auto' } : { float: 'left' }, padding ? { padding: padding } : { padding: '0.5rem' }));
+  }, centered ? { margin: 'auto' } : { float: 'left' }, padding ? { paddingLeft: padding, paddingRight: padding } : { paddingRight: '1rem', paddingLeft: '1rem' }));
 };
 
 var setLarge = function setLarge(columnNumber) {
@@ -24134,14 +24134,36 @@ var App = function (_Component) {
       };
 
       var styles = {
-        padding: '1rem',
-        backgroundColor: 'orange',
-        marginBottom: '0.5rem'
+        backgroundColor: 'darkred',
+        color: '#fff',
+        marginBottom: '1rem',
+        minHeight: '150px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
       };
 
       return _react2.default.createElement(
         'div',
         { style: defaultStyles },
+        _react2.default.createElement(
+          'header',
+          {
+            style: { background: '#333', padding: '1rem', marginBottom: '1rem' } },
+          _react2.default.createElement(
+            _index.Row,
+            null,
+            _react2.default.createElement(
+              _index.Column,
+              null,
+              _react2.default.createElement(
+                'span',
+                { style: { color: '#999' } },
+                'Logo'
+              )
+            )
+          )
+        ),
         _react2.default.createElement(
           _index.Row,
           null,
@@ -24154,8 +24176,7 @@ var App = function (_Component) {
                 xSmall: '12',
                 small: '6',
                 medium: '4',
-                large: '4',
-                padding: '10px' },
+                large: '3' },
               _react2.default.createElement(
                 'div',
                 { style: styles },
@@ -24164,7 +24185,7 @@ var App = function (_Component) {
             );
           })
         ),
-        _react2.default.createElement('hr', null),
+        _react2.default.createElement('br', null),
         _react2.default.createElement(
           _index.Row,
           null,
@@ -24201,55 +24222,97 @@ var App = function (_Component) {
             )
           )
         ),
-        _react2.default.createElement('hr', null),
+        _react2.default.createElement('br', null),
         _react2.default.createElement(
           _index.Row,
           null,
           _react2.default.createElement(
             _index.Column,
             { xSmall: '12', small: '8', medium: '6', large: '8' },
-            _react2.default.createElement(
-              'div',
-              {
-                style: {
-                  backgroundColor: 'red',
-                  padding: '1rem',
-                  marginBottom: '1rem'
-                } },
-              'Hello World 1'
-            )
+            _react2.default.createElement('div', {
+              style: {
+                backgroundColor: 'darkred',
+                padding: '1rem',
+                marginBottom: '1rem'
+              }
+            })
           ),
           _react2.default.createElement(
             _index.Column,
             { xSmall: '12', small: '4', medium: '6', large: '4' },
-            _react2.default.createElement(
-              'div',
-              {
-                style: {
-                  backgroundColor: 'red',
-                  padding: '1rem',
-                  marginBottom: '1rem'
-                } },
-              'Hello World 2'
-            )
+            _react2.default.createElement('div', {
+              style: {
+                backgroundColor: 'darkred',
+                padding: '1rem',
+                marginBottom: '1rem'
+              }
+            })
           ),
           _react2.default.createElement(
             _index.Column,
             { xSmall: '12', small: '4', medium: '6', large: '4' },
-            _react2.default.createElement(
-              'div',
-              { style: { backgroundColor: 'red', padding: '1rem' } },
-              'Hello World 3'
-            )
+            _react2.default.createElement('div', {
+              style: {
+                backgroundColor: 'darkred',
+                padding: '1rem',
+                marginBottom: '1rem'
+              }
+            })
           ),
           _react2.default.createElement(
             _index.Column,
             { xSmall: '12', small: '8', medium: '6', large: '8' },
-            _react2.default.createElement(
-              'div',
-              { style: { backgroundColor: 'red', padding: '1rem' } },
-              'Hello World 4'
-            )
+            _react2.default.createElement('div', {
+              style: {
+                backgroundColor: 'darkred',
+                padding: '1rem',
+                marginBottom: '1rem'
+              }
+            })
+          ),
+          _react2.default.createElement(
+            _index.Column,
+            { xSmall: '12', small: '3', medium: '6', large: '3' },
+            _react2.default.createElement('div', {
+              style: {
+                backgroundColor: 'darkred',
+                padding: '1rem',
+                marginBottom: '1rem'
+              }
+            })
+          ),
+          _react2.default.createElement(
+            _index.Column,
+            { xSmall: '12', small: '9', medium: '6', large: '9' },
+            _react2.default.createElement('div', {
+              style: {
+                backgroundColor: 'darkred',
+                padding: '1rem',
+                marginBottom: '1rem'
+              }
+            })
+          ),
+          _react2.default.createElement(
+            _index.Column,
+            { xSmall: '12', small: '5', medium: '6', large: '9' },
+            _react2.default.createElement('div', {
+              style: {
+                backgroundColor: 'darkred',
+                padding: '1rem',
+                marginBottom: '1rem'
+              }
+            })
+          ),
+          _react2.default.createElement(
+            _index.Column,
+            { xSmall: '12', small: '7', medium: '6', large: '3' },
+            _react2.default.createElement('div', {
+              style: {
+                backgroundColor: 'darkred',
+                padding: '1rem',
+                marginBottom: '1rem'
+              }
+            })
           )
         )
       );
